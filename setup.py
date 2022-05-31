@@ -35,7 +35,7 @@ if '--show-packages' in ' '.join(sys.argv):
 
 setup(
     name='ecli',
-    version='1.4.3',
+    version='1.4.4',
     packages=find_packages(),
     include_package_data=True,
     install_requires=required_packages,
