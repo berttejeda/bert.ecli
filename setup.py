@@ -34,7 +34,7 @@ if '--show-packages' in ' '.join(sys.argv):
     sys.exit()    
 
 setup(
-    name='ecli',
+    name='bertdotecli',
     version='1.4.4',
     packages=find_packages(),
     include_package_data=True,
