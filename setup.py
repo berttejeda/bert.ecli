@@ -13,19 +13,16 @@ def package_files(directory):
 extra_files = package_files('ecli/plugins')
 
 required_packages = [
-        'bs4==0.0.1',
-        'click==7.0',
-        'click-plugins==1.1.1',
-        'colorama==0.4.3',
-        'first==2.0.2',
-        'bertdotconfig==3.0.0',
-        'lxml==4.5.0',
-        'paramiko==2.7.0',
-        'PyCryptodome',
-        'jello==1.2.10',
-        'pandas==1.0.3',
-        'requests==2.22.0',
-        'PyYAML<6.0.0,>=5.3.1',
+        'bs4>=0.0.1,<0.1',
+        'click>=8.0,<9.0',
+        'click-plugins>=1.1.1,<1.2',
+        'colorama>=0.4.3,<0.5',
+        'first>=2.0.2,<2.1',
+        'bertdotconfig>=3.2.0,<3.3',
+        'paramiko>=2.7.0,<2.8',
+        'jello>=1.2.10,<1.3',
+        'requests>=2.22.0,<2.23',
+        'PyYAML>=5.3.1,<6.0',
     ]
 
 if '--show-packages' in ' '.join(sys.argv):

@@ -37,7 +37,7 @@ elif __file__:
 else:
     application_path = "."
 # Initialize Plugins Library
-cli_plugins = plugins.Plugins(application_path, PluginsFromConfig=config.properties.plugins.paths)
+cli_plugins = plugins.Plugins(application_path, PluginsFromConfig=config.plugins.paths)
 # Initialize Logger with the name 'main' to make sure any child loggers 
 # do not propagate their messages to the default 'root' logger,
 # less you get duplicate output
@@ -105,7 +105,7 @@ def cli(**kwargs):
 ))
 def show_runtime_info(**kwargs):
     """Display runtime information"""
-    logger.info("Current config path: %s" % config.properties.config_file_uri)
+    logger.info("Current config path: %s" % config.config_file_uri)
     
 @cli.command(name='plugins.install', context_settings=dict(
     ignore_unknown_options=True
