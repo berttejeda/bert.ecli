@@ -18,7 +18,7 @@ required_packages = [
         'click-plugins>=1.1.1,<1.2',
         'colorama>=0.4.3,<0.5',
         'first>=2.0.2,<2.1',
-        'bertdotconfig>=3.2.0,<3.3',
+        'bertdotconfig>=4.0.0,<4.1.0',
         'paramiko>=2.7.0,<2.8',
         'jello>=1.2.10,<1.3',
         'requests>=2.22.0,<2.23',
@@ -32,7 +32,7 @@ if '--show-packages' in ' '.join(sys.argv):
 
 setup(
     name='bertdotecli',
-    version='1.4.4',
+    version='1.5.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=required_packages,
