@@ -16,7 +16,7 @@ from ecli.lib.dictutils import DictUtils
 
 # Private variables
 __author__ = 'Bert Tejeda'
-__version__ = '1.6.0'
+__version__ = '1.6.1'
 # Configuration Files
 config_file_name = 'ecli.config.yaml'
 # Initialize App Config
