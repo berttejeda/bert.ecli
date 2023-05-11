@@ -35,7 +35,7 @@ if '--show-packages' in ' '.join(sys.argv):
 
 setup(
     name='bert-dot-ecli',
-    version='1.6.1',
+    version='1.6.2',
     packages=find_packages(),
     include_package_data=True,
     install_requires=required_packages,
