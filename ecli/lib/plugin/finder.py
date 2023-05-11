@@ -10,7 +10,7 @@ class PluginFinder:
         self.search_paths = os.environ.get('PATH', '').split(os.pathsep)
         self.PluginMetadata = PluginMetadata()
         self.plugin_dir_prefix_pattern = re.compile(
-          'ecli.plugins[\W]+?|ecli.plugins'
+          'ecli.plugins[\W]+?|ecli.plugins|bert.ecli.plugins'
           )
 
     def canonical_path(self, filepath):
@@ -25,7 +25,7 @@ class PluginFinder:
         yield top, dirs, nondirs
         if maxdepth > 1:
             for name in dirs:
-                for x in walk(os.path.join(top, name), maxdepth-1):
+                for x in self.walk(os.path.join(top, name), maxdepth-1):
                     yield x
 
     def find_executables(self, **kwargs):
