@@ -1,4 +1,4 @@
-from ecli.lib.dictutils import DictUtils
+from bertdotconfig.configutils import AttrDict
 from ecli.lib.logger import Logger
 from ecli.lib.shell.which import which
 import os
@@ -53,7 +53,7 @@ class CliInvocation:
         # Adjust shell environment
         curr_env = os.environ.copy()
         env_variables = kwargs['env_variables']
-        modified_env = DictUtils().Merge(env_variables,curr_env)
+        modified_env = AttrDict.merge(env_variables,curr_env)
 
         if exe is None:
             self.logger.error("Specified executable is invalid, got '%s'" % exe)

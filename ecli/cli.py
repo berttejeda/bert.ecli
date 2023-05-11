@@ -12,7 +12,6 @@ from ecli.lib.plugin import plugins
 from ecli.lib.input.streams import Streams
 from ecli.lib.dictutils import Struct
 from bertdotconfig import Config
-from ecli.lib.dictutils import DictUtils
 
 # Private variables
 __author__ = 'Bert Tejeda'
@@ -24,8 +23,7 @@ config = Config(
     config_file_uri=config_file_name,
     default_value=default_config
 ).read()
-# Dictutil
-dictutil = DictUtils()
+
 # Determine if application is a script file or frozen exe
 if getattr(sys, 'frozen', False):
     # If the application is run as a bundle, the PyInstaller bootloader
@@ -71,8 +69,8 @@ def cli(**kwargs):
         ).read()
         # Verbose mode enabled?
     # TODO Find a better approach to this hacky method
-    debug = kwargs['_debug'] or dictutil.deep_get(config, 'logging.debug', False)
-    verbose = kwargs.get('verbose', None) or dictutil.deep_get(config, 'logging.verbose', False)
+    debug = kwargs['_debug'] or config.get('logging.debug', False)
+    verbose = kwargs.get('verbose', None) or config.get('logging.verbose', False)
     # Set up logging with our desired output level
     if debug:
         loglevel = logging.DEBUG  # 10
@@ -89,10 +87,10 @@ def cli(**kwargs):
         else:
             logging.disable(sys.maxint) # Python 2
     # Add the log  file handler to the logger, if applicable
-    log_file = dictutil.deep_get(config, 'logging.log_file', None) or kwargs.get('log_file', None)
+    log_file = config.get('logging.log_file', None) or kwargs.get('log_file', None)
     if log_file:
-        logging_maxBytes = dictutil.deep_get(config, 'logging.maxBytes', 10000000)
-        logging_backupCount = dictutil.deep_get(config, 'logging.backupCount', 5)        
+        logging_maxBytes = config.get('logging.maxBytes', 10000000)
+        logging_backupCount = config.get('logging.backupCount', 5)        
         formatter = logging.Formatter(logger.handlers[0].formatter._fmt)
         filehandler = logging.handlers.RotatingFileHandler(
             log_file, maxBytes=logging_maxBytes, backupCount=logging_backupCount)
@@ -164,18 +162,18 @@ def install_plugin(**kwargs):
       kwargs['username'],
       prompted_username,
       os.environ.get('username'),
-      dictutil.deep_get(config, 'plugins.auth.username')
+      config.get('plugins.auth.username')
       ])
   password = first([
       kwargs['password'],
       prompted_password,
       os.environ.get('password'),
-      dictutil.deep_get(config, 'plugins.auth.password')
+      config.get('plugins.auth.password')
       ])
   token = first([
       kwargs['token'],
       os.environ.get('token'),
-      dictutil.deep_get(config, 'plugins.auth.token')
+      config.get('plugins.auth.token')
       ])
 
   # Fail if credentials not provided under certian conditios
@@ -285,7 +283,7 @@ Do you want to continue? [yes|y/no|n]""" % '\n'.join(['- %s' % p for p in cli_pl
       if os.path.isdir(canonical_p):
           if p_is_git_repo:
               logger.info('Attempting to update %s ...' % p)
-              ctx.invoke(cli.commands['plugins.update'], extra_arguments=['--plugin-path', p, '--no-prompt'])
+              ctx.invoke(cli.commands.get('plugins.update'), extra_arguments=['--plugin-path', p, '--no-prompt'])
           else:
               logger.warning('%s is not a git repo, skipping' % p)
 

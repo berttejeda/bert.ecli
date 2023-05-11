@@ -1,5 +1,5 @@
+from bertdotconfig.configutils import AttrDict
 import click
-from ecli.lib.dictutils import DictUtils
 from ecli.lib.plugin.metadata import PluginMetadata
 from ecli.lib.plugin.finder import PluginFinder
 try:
@@ -44,7 +44,6 @@ class Plugins:
             './%s' % PluginsDirName,
         ] + user_plugins + plugins_from_config
         self.PluginFinder = PluginFinder()
-        self.DictUtils = DictUtils()  
 
     def add_plugin(self, func, **kwargs):
         """Adds provided executables spec as available cli commands"""
@@ -73,7 +72,7 @@ class Plugins:
                     extra_args = kwargs.get('extra_arguments', [])
                     args = list(cmd_args) + extra_args
                     shell_env_variables = shell_map[cmdFileExt].get('env_variables', {})
-                    modified_env_variables = self.DictUtils.Merge(env_variables, shell_env_variables)
+                    modified_env_variables = AttrDict.merge(env_variables, shell_env_variables)
                     cmd_spec = cmd_file_path
                     if kwargs.get('use_cred_mgr'):
                         if sys.platform == 'win32':
