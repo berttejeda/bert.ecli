@@ -1,4 +1,4 @@
-from bertdotconfig.configutils import AttrDict
+from btconfig.configutils import AttrDict
 from ecli.lib.logger import Logger
 from ecli.lib.shell.which import which
 import os

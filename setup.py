@@ -10,10 +10,10 @@ def package_files(directory):
             paths.append(os.path.join('..', path, filename))
     return paths
 
-extra_files = package_files('ecli.plugins')
+extra_files = package_files('btecli.plugins')
 
 required_packages = [
-        'bertdotconfig>=4.3.0,<4.4.0',
+        'btconfig>=4.3.0,<4.4.0',
         'bs4>=0.0.1,<0.1.0',
         'click>=8.1.3,<9.0.0',
         'click-plugins==1.1.1',
@@ -34,7 +34,7 @@ if '--show-packages' in ' '.join(sys.argv):
     sys.exit()    
 
 setup(
-    name='bert-dot-ecli',
+    name='btecli',
     version='1.6.2',
     packages=find_packages(),
     include_package_data=True,
@@ -43,6 +43,6 @@ setup(
     entry_points='''
         [core_package.cli_plugins]
         [console_scripts]
-        ecli=ecli.cli:cli
+        ecli=btecli.cli:cli
     ''',
 )

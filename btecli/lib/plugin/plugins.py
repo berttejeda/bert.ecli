@@ -1,4 +1,4 @@
-from bertdotconfig.configutils import AttrDict
+from btconfig.configutils import AttrDict
 import click
 from ecli.lib.plugin.metadata import PluginMetadata
 from ecli.lib.plugin.finder import PluginFinder

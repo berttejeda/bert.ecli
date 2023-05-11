@@ -11,7 +11,7 @@ from ecli.lib.options.mexclusive import MutuallyExclusiveOption
 from ecli.lib.plugin import plugins
 from ecli.lib.input.streams import Streams
 from ecli.lib.dictutils import Struct
-from bertdotconfig import Config
+from btconfig import Config
 
 # Private variables
 __author__ = 'Bert Tejeda'

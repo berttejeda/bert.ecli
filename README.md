@@ -98,7 +98,7 @@ To install,
 There are two distributions of the `ecli`
 
 1. python package: Installed via 
-   `pip3 install bertdotecli`
+   `pip3 install btecli`
 1. The Windows bundled executable, available via [Releases](https://github.com/berttejeda/bert.ecli/releases)<br />
    Note that the bundled executable can be slow to initialize.<br />
    This is because python itself is bundled into the ecli binary<br />
@@ -113,7 +113,7 @@ pip3 install \
 --trusted-host=pypi.org \
 --trusted-host=github.com \
 --trusted-host=files.pythonhosted.org \
-bertdotecli
+btecli
 ```
 
 The next section will cover Plugins.
