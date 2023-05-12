@@ -35,7 +35,7 @@ if '--show-packages' in ' '.join(sys.argv):
 
 setup(
     name='btecli',
-    version='1.6.5',
+    version='1.7.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=required_packages,
