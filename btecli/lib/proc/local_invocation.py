@@ -1,6 +1,6 @@
 from btconfig.configutils import AttrDict
-from ecli.lib.logger import Logger
-from ecli.lib.shell.which import which
+from btecli.lib.logger import Logger
+from btecli.lib.shell.which import which
 import os
 import re
 import sys
@@ -10,7 +10,7 @@ import time
 
 # Import third-party and custom modules
 try:
-    from ecli.lib.shell import shell_map
+    from btecli.lib.shell import shell_map
     import colorama
 except ImportError as e:
     print('Error in %s ' % os.path.basename(__file__))

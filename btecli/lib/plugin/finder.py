@@ -1,5 +1,5 @@
-from ecli.lib.plugin.metadata import PluginMetadata
-from ecli.lib.shell import shell_exts
+from btecli.lib.plugin.metadata import PluginMetadata
+from btecli.lib.shell import shell_exts
 import os
 import re
 import sys

@@ -1,7 +1,7 @@
 import os
 import re
 import sys
-from ecli.lib.shell.bash_init import bash_env_variables, bash_pre_exec
+from btecli.lib.shell.bash_init import bash_env_variables, bash_pre_exec
 
 # Account for script packaged as an exe via cx_freeze
 if getattr(sys, 'frozen', False):

@@ -1,21 +1,21 @@
 from pkg_resources import iter_entry_points
 import click
 from click_plugins import with_plugins
-from ecli.lib.defaults import default_config
+from btecli.lib.defaults import default_config
 import getpass
 import logging
 import os
 import sys
-from ecli.lib.logger import Logger
-from ecli.lib.options.mexclusive import MutuallyExclusiveOption
-from ecli.lib.plugin import plugins
-from ecli.lib.input.streams import Streams
-from ecli.lib.dictutils import Struct
+from btecli.lib.logger import Logger
+from btecli.lib.options.mexclusive import MutuallyExclusiveOption
+from btecli.lib.plugin import plugins
+from btecli.lib.input.streams import Streams
+from btecli.lib.dictutils import Struct
 from btconfig import Config
 
 # Private variables
 __author__ = 'Bert Tejeda'
-__version__ = '1.6.5'
+__version__ = '1.6.6'
 # Configuration Files
 config_file_name = 'ecli.config.yaml'
 # Initialize App Config
@@ -132,8 +132,8 @@ def install_plugin(**kwargs):
   """Install ecli plugins from a git repo"""
   # Fail early if git command is not available
   from first import first
-  from ecli.lib.plugin.finder import PluginFinder
-  from ecli.lib.shell.which import which
+  from btecli.lib.plugin.finder import PluginFinder
+  from btecli.lib.shell.which import which
   import re
 
   if not which('git'):
@@ -256,7 +256,7 @@ def eval_python_code(code, **kwargs):
 
 # Add plugins from PATH
 cli_plugins.add_plugins_from_path(cli)
-# Add plugins from ecli plugin paths
+# Add plugins from btecli plugin paths
 cli_plugins.add_plugins(cli, plugin_paths=cli_plugins.plugin_paths)
 
 @cli.command(name='plugins.update.all', context_settings=dict(
@@ -265,7 +265,7 @@ cli_plugins.add_plugins(cli, plugin_paths=cli_plugins.plugin_paths)
 @click.pass_context
 def update_all_plugin_paths(ctx, **kwargs):
   """Updates all detected plugin paths"""
-  from ecli.lib.plugin.finder import PluginFinder
+  from btecli.lib.plugin.finder import PluginFinder
   warning = """
 The update operation will clear any local changes you've made
 to files in the following plugin paths:

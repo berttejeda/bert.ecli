@@ -1,5 +1,5 @@
-from ecli.lib.logger import Logger
-from ecli.lib.shell import shell_map, shell_exts
+from btecli.lib.logger import Logger
+from btecli.lib.shell import shell_map, shell_exts
 
 # Setup Logging
 

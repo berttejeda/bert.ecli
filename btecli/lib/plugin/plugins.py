@@ -1,7 +1,7 @@
 from btconfig.configutils import AttrDict
 import click
-from ecli.lib.plugin.metadata import PluginMetadata
-from ecli.lib.plugin.finder import PluginFinder
+from btecli.lib.plugin.metadata import PluginMetadata
+from btecli.lib.plugin.finder import PluginFinder
 try:
     # Python 2
     from future_builtins import filter
@@ -9,13 +9,13 @@ except ImportError:
     # Python 3
     pass
 import logging
-from ecli.lib.logger import Logger
-from ecli.lib.proc import local_invocation
+from btecli.lib.logger import Logger
+from btecli.lib.proc import local_invocation
 import os
-from ecli.lib.shell import shell_map
+from btecli.lib.shell import shell_map
 import sys
 if sys.platform == 'win32':
-    from ecli.lib.cryptography.wincred import GetGenericCredential
+    from btecli.lib.cryptography.wincred import GetGenericCredential
 
 # Setup Logging
 logger = Logger().init_logger(__name__)
