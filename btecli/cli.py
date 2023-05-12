@@ -15,7 +15,7 @@ from btconfig import Config
 
 # Private variables
 __author__ = 'Bert Tejeda'
-__version__ = '1.7.0'
+__version__ = '1.7.1'
 # Configuration Files
 config_file_name = 'ecli.config.yaml'
 # Initialize App Config

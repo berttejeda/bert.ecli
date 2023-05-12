@@ -13,7 +13,7 @@ def package_files(directory):
 extra_files = package_files('btecli.plugins')
 
 required_packages = [
-        'btconfig>=4.4.0,<5.0.0',
+        'btconfig>=4.3.0,<5.0.0',
         'bs4>=0.0.1,<0.1.0',
         'click>=8.1.3,<9.0.0',
         'click-plugins==1.1.1',
@@ -35,7 +35,7 @@ if '--show-packages' in ' '.join(sys.argv):
 
 setup(
     name='btecli',
-    version='1.7.0',
+    version='1.7.1',
     packages=find_packages(),
     include_package_data=True,
     install_requires=required_packages,
