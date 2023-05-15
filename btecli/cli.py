@@ -6,16 +6,19 @@ import getpass
 import logging
 import os
 import sys
+import btecli
 from btecli.lib.logger import Logger
 from btecli.lib.options.mexclusive import MutuallyExclusiveOption
 from btecli.lib.plugin import plugins
 from btecli.lib.input.streams import Streams
 from btecli.lib.dictutils import Struct
 from btconfig import Config
+from getversion import get_module_version
 
 # Private variables
 __author__ = 'Bert Tejeda'
-__version__ = '1.7.1'
+__version__ = get_module_version(btecli)[0]
+__program_name__ = 'ecli'
 # Configuration Files
 config_file_name = 'ecli.config.yaml'
 # Initialize App Config
@@ -40,6 +43,8 @@ cli_plugins = plugins.Plugins(application_path, PluginsFromConfig=config.plugins
 # do not propagate their messages to the default 'root' logger,
 # less you get duplicate output
 logger = Logger().init_logger('main')
+
+logger.debug(f'{__program_name__} version is {__version__}')
 
 @with_plugins(iter_entry_points('ecli.plugins'))
 @click.group()

@@ -1,48 +1,34 @@
-from setuptools import setup, find_packages
-import glob
+import configparser as ConfigParser
 import os
+from setuptools import setup
+import sysconfig
 import sys
 
-def package_files(directory):
-    paths = []
-    for (path, directories, filenames) in os.walk(directory):
-        for filename in filenames:
-            paths.append(os.path.join('..', path, filename))
-    return paths
+etc_dirname = 'etc'
+gui_dirname = 'bill.gui'
 
-extra_files = package_files('btecli.plugins')
+cfg = ConfigParser.ConfigParser()
+cfg.read('setup.cfg')
+my_package_name = cfg.get('metadata', 'name')
 
-required_packages = [
-        'btconfig>=4.3.0,<5.0.0',
-        'bs4>=0.0.1,<0.1.0',
-        'click>=8.1.3,<9.0.0',
-        'click-plugins==1.1.1',
-        'colorama==0.4.3',
-        'first==2.0.2',
-        'jello==1.2.10',
-        'lxml==4.9.1',
-        'pandas>=2.0.1,<3.0.0',
-        'paramiko>=2.11.0,<3.0.0',
-        'PyCryptodome>=3.17,<4.0.0',
-        'PyYAML>=6.0,<7.0.0',
-        'requests>=2.28.1,<2.30.0',
-    ]
+if sys.platform == 'win32':
+  site_packages_path = 'scripts'
+else:
+  site_packages_path = 'bin'
 
-if '--show-packages' in ' '.join(sys.argv):
-    for p in required_packages:
-        print(p.split('=')[0])
-    sys.exit()    
+data_files_path = site_packages_path
 
-setup(
-    name='btecli',
-    version='1.7.1',
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=required_packages,
-    package_data={'': extra_files},
-    entry_points='''
-        [core_package.cli_plugins]
-        [console_scripts]
-        ecli=btecli.cli:cli
-    ''',
-)
+def tree(src):
+  result = []
+  data_file_path = os.path.join(data_files_path, src)
+  for root, dirs, files in os.walk(src):
+    for file in files:
+      if os.path.sep in root:
+          sub_root = root.split(os.path.sep, 1)[-1]
+          file = os.path.join(sub_root, file)
+      result.append(os.path.join(src, file))
+  return [(data_file_path, result)]
+
+DATA_FILES = tree('btecli.plugins')
+
+setup(data_files=DATA_FILES)
