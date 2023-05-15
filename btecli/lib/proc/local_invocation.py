@@ -53,7 +53,7 @@ class CliInvocation:
         # Adjust shell environment
         curr_env = os.environ.copy()
         env_variables = kwargs['env_variables']
-        modified_env = AttrDict.merge(env_variables,curr_env)
+        modified_env = AttrDict.merge(curr_env, env_variables)
 
         if exe is None:
             self.logger.error("Specified executable is invalid, got '%s'" % exe)
