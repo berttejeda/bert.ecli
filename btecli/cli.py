@@ -121,12 +121,6 @@ def show_runtime_info(**kwargs):
   help='git repo token')
 @click.option('--repo-url', '-r',
   required=True, help='git repo URL')
-@click.option('--public-repo', '-R', cls=MutuallyExclusiveOption,
-  is_flag=True, mutually_exclusive=["use_saved_credentials"],
-  help='Used when repo does not require credentials')
-@click.option('--use-saved-credentials', '-S', cls=MutuallyExclusiveOption,
-  mutually_exclusive=["public_repo"], 
-  is_flag=True, help='Use saved credentials')
 @click.option('--alternate-name', '-n',
   help='Specify a different name for the cloned ecli Plugin repo')
 @click.option('--plugin-path', '-T',
@@ -181,12 +175,7 @@ def install_plugin(**kwargs):
       config.get('plugins.auth.token')
       ])
 
-  # Fail if credentials not provided under certian conditios
-  if not any([kwargs['use_saved_credentials'], kwargs['public_repo']]) and not all([username, password]):
-    print('Error: Username and password can only be empty when')
-    print('using saved credentials or specifying a public repo, seek --help')
-    sys.exit()
-  elif kwargs['prompt_for_credentials'] and not all([username, password]):
+  if kwargs['prompt_for_credentials'] and not all([username, password]):
     sys.exit('Error: You specified an invalid username and/or password, seek --help')
 
   # Plugin Package Repo URL
