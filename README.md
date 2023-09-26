@@ -141,11 +141,11 @@ and rust to the mix.
 ## Installing Plugins
 
 Invoke the `plugins.install` built-in subcommand to install a 
-given plugin repo. The syntax is `ecli plugins.install -S -r <gitrepo>`.
+given plugin repo. The syntax is `ecli plugins.install -r <gitrepo>`.
 
 You can install my plugin repo to start:
 
-`ecli plugins.install -S -r https://github.com/berttejeda/bert.ecli.plugins.git -a ecli.plugins`
+`ecli plugins.install -r https://github.com/berttejeda/bert.ecli.plugins.git -a ecli.plugins`
 
 Once you've installed a plugin repo, run `ecli` to get 
 the list of newly available subcommands 
